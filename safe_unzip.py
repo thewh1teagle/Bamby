@@ -21,7 +21,7 @@ def limit(ram_limit, disk_limit):
         resource.setrlimit(disk_resource, (soft_disk_limit, hard_disk_limit))
     
 
-def unzip(path='', path_from_local=''):
+def unzip_recursive(path='', path_from_local=''):
     filepath = path_from_local + path
     extract_path = filepath.strip('.zip') + '/'
 
@@ -33,7 +33,7 @@ def unzip(path='', path_from_local=''):
     for name in namelist:
         try:
             if name.endswith('.zip'):
-                unzip(path=name, path_from_local=extract_path)
+                unzip_recursive(path=name, path_from_local=extract_path)
         except (OSError, MemoryError, TypeError):
             raise
         except Exception as e:
@@ -46,4 +46,4 @@ if __name__ == '__main__':
     RAM_LIMIT = int( (1024*1024*1024) * 0.5 ) # 0.5GB
     DISK_LIMIT = (1024*1024*1024) * 1 # 1GB
     with limit(RAM_LIMIT, DISK_LIMIT):
-        unzip('bomb.zip')
+        unzip_recursive('bomb.zip')
