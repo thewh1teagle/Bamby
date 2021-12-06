@@ -3,9 +3,9 @@
 
 **In memory ZIP bomb Creator**
 
-*A zip bomb, also known as a zip of death or decompression bomb,  
+*"A zip bomb, also known as a zip of death or decompression bomb,  
 is a malicious archive file designed to crash or render  
-useless the program or system reading it.*  
+useless the program or system reading it."*  
 Read more at [Wikipedia](https://en.wikipedia.org/wiki/Zip_bomb)  
 
 
