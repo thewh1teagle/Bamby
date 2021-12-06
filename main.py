@@ -50,12 +50,10 @@ def zip_bomb(depth) -> bytes:
 
 def dummy_file(size) -> bytes: # size in GB
     content = (size*1024*1024) * b'0' * 1024
-    f = io.BytesIO(content)
-    return f
+    return io.BytesIO(content)
 
 if __name__ == "__main__":
-    z = zip_bomb(5)
-    content, size, decompress_size = z.values()
+    content, size, decompress_size = zip_bomb(5).values()
     with open('bomb.zip', 'wb') as f:
         f.write(content)
     print(f'Before de-compression: {size / 1000}KB')
