@@ -27,7 +27,7 @@ After de-compression: 10000000000GB
 
 
 ### How to protect against zip bomb?
-Have a look under `safe_unzip.py`  
+Have a look under [`safe_unzip.py`](https://github.com/thewh1teagle/Bamby/blob/main/safe_unzip.py#L45)  
 The idea is simple,  
 Limit the possible resources of the process,  
 no matter what, it will not hurt your system 😃  
