@@ -1,8 +1,7 @@
 from typing import Dict, List
-import zipfile
-import io
 from copy import deepcopy
-import uuid
+import io, zipfile, uuid
+
 
 def generate_zip(files: List[Dict]) -> bytes:
     buff = io.BytesIO()
