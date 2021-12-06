@@ -1,17 +1,24 @@
 # Bamby
+<img src="https://user-images.githubusercontent.com/61390950/144936845-23832b19-59e6-4117-8a1b-055ff9ec3f1e.png" style="width: 250px; height: 200px;">
 
-In memory ZIP bomb Creator  
-Read more at [Wikipedia](https://en.wikipedia.org/wiki/Zip_bomb)
+**In memory ZIP bomb Creator**
+
+*A zip bomb, also known as a zip of death or decompression bomb,  
+is a malicious archive file designed to crash or render  
+useless the program or system reading it.*  
+Read more at [Wikipedia](https://en.wikipedia.org/wiki/Zip_bomb)  
 
 
-### How to use
+
+
+### Usage
 ```bash
 git clone https://github.com/thewh1teagle/bamby
 cd bamby
 python3 main.py
 ```
 
-### Sample output with depth of 10
+### Sample output
 ```log
 Before de-compression: 3.072KB
 After de-compression: 10000000000GB
