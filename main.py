@@ -53,7 +53,7 @@ def dummy_file(size) -> bytes: # size in GB
     return io.BytesIO(content)
 
 if __name__ == "__main__":
-    content, size, decompress_size = zip_bomb(5).values()
+    content, size, decompress_size = zip_bomb(1).values()
     with open('bomb.zip', 'wb') as f:
         f.write(content)
     print(f'Before de-compression: {size / 1000}KB')

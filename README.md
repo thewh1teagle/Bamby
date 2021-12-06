@@ -17,3 +17,10 @@ Before de-compression: 3.072KB
 After de-compression: 10000000000GB
 ```
 - `1000GB = 1TB, 1000TB = 1PB`
+
+
+### How to protect against zip bomb?
+Have a look under `safe_unzip.py`  
+The idea is simple,  
+Limit the possible resources of the process,  
+no matter what, it will not hurt your system 😃  
