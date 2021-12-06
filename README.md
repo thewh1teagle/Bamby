@@ -1,5 +1,5 @@
 # Bamby
-<img src="https://user-images.githubusercontent.com/61390950/144936845-23832b19-59e6-4117-8a1b-055ff9ec3f1e.png" style="width: 250px; height: 200px;">
+<img src="https://user-images.githubusercontent.com/61390950/144936845-23832b19-59e6-4117-8a1b-055ff9ec3f1e.png" style="pointer-events: none;cursor: none; user-select: none; width: 250px; height: 200px;">
 
 **In memory ZIP bomb Creator**
 
