@@ -1,6 +1,6 @@
 # Bamby
 
-In memory ZIP bomb Creator
+In memory ZIP bomb Creator  
 Read more at [Wikipedia](https://en.wikipedia.org/wiki/Zip_bomb)
 
 
